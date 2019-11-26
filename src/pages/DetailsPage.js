@@ -9,7 +9,9 @@ export default class DetailsPage extends Component {
         }
     }
     componentDidMount(){
+        //fetching the id sent with router
         const id= this.props.location.state.id
+        //getting details of pet using it's id
         fetch("http://5dd7af92505c590014d3b4ac.mockapi.io/pets/" + id )
         .then((res) => res.json() )
         .then((data) => this.setState({pet: data}) )
@@ -18,7 +20,7 @@ export default class DetailsPage extends Component {
 
     render() {
         const {name, image, age, description, breed} = this.state.pet;
-
+        // using the same markup of pet component 
         return (
             <div className="d-flex justify-content-center">
                <div className="col-lg-6 col-md-4 mb-4">

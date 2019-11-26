@@ -32,7 +32,8 @@ class HomePage extends React.Component{
     }
 
     petSelect = (id) => {
-        console.log(id)
+        //we can use history in page components because they have links in router
+        // we can push payload with router and will be stored in props.location.state.{}
         this.props.history.push("/detay",{id:id})
     }
     render(){

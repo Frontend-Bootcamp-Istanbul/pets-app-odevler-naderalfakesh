@@ -57,6 +57,7 @@ class PetList extends React.Component{
     render(){
         const Yukleniyor = <div>Yukleniyor</div>;
         const EmptyPets = <div>Bulunamadı</div>;
+        // adding keys to this array prevent the warning from eslint
         const Pets =  [<h3 key={1}>Gösterilen Pet Sayısı: {this.state.pets.length}</h3>,<div  key= {2}className="row">
             {
                 this.state.pets.map((pet) => {
