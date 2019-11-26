@@ -31,6 +31,10 @@ class HomePage extends React.Component{
         });
     }
 
+    petSelect = (id) => {
+        console.log(id)
+        this.props.history.push("/detay",{id:id})
+    }
     render(){
         return (
             <div>
@@ -47,6 +51,7 @@ class HomePage extends React.Component{
                             <PetList
                                 activeFilter={this.state.activeFilter}
                                 searchValue={this.state.searchValue}
+                                petSelect={this.petSelect}
                             />
                         </div>
                     </div>

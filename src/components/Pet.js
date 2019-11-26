@@ -3,13 +3,17 @@ import React from 'react';
 
 function Pet(props) {
     const {name, image, age, description, breed} = props;
+    const petSelect = (e) =>{
+        e.preventDefault();
+        props.petSelect(props.id);
+    }
     return (
         <div className="col-lg-6 col-md-4 mb-4">
             <div className="card h-100">
-                <a href="#"><img className="card-img-top" src={image} alt="" style={{height: "292px"}}/></a>
+                <a href="#top" onClick={petSelect} ><img className="card-img-top" src={image} alt="" style={{height: "292px"}}/></a>
                 <div className="card-body">
                     <h4 className="card-title">
-                        <a href="#">{name}</a>
+                        <a href="#top" onClick={petSelect} >{name}</a>
                         <div>
                             <span className="badge badge-primary" style={{fontSize: "12px"}}>{breed}</span>
                         </div>
