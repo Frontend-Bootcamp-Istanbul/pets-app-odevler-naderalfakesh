@@ -10,9 +10,13 @@ export default class DetailsPage extends Component {
     }
     componentDidMount(){
         //fetching the id sent with router
-        const id= this.props.location.state.id
+        let id = 0;
+        if(this.props.location.state)  {id= this.props.location.state.id;}
+        // justg for fun url parameter added 
+        else { id  = this.props.match.params.id; }
+        
         //getting details of pet using it's id
-        fetch("http://5dd7af92505c590014d3b4ac.mockapi.io/pets/" + id )
+        fetch(`http://5dd7af92505c590014d3b4ac.mockapi.io/pets/${id}` )
         .then((res) => res.json() )
         .then((data) => this.setState({pet: data}) )
         .catch(() => this.setState({error: true}) )

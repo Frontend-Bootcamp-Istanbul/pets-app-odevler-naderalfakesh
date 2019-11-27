@@ -2,10 +2,10 @@ import React from 'react';
 
 
 function Pet(props) {
-    const {name, image, age, description, breed} = props;
+    const {id , name, image, age, description, breed} = props;
     const petSelect = (e) =>{
         e.preventDefault();
-        props.petSelect(props.id);
+        props.petSelect(id);
     }
     return (
         <div className="col-lg-6 col-md-4 mb-4">
