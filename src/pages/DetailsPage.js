@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import axios from 'axios'
 export default class DetailsPage extends Component {
     constructor(props){
         super(props);
@@ -14,11 +14,9 @@ export default class DetailsPage extends Component {
         if(this.props.location.state)  {id= this.props.location.state.id;}
         // justg for fun url parameter added 
         else { id  = this.props.match.params.id; }
-        
         //getting details of pet using it's id
-        fetch(`http://5dd7af92505c590014d3b4ac.mockapi.io/pets/${id}` )
-        .then((res) => res.json() )
-        .then((data) => this.setState({pet: data}) )
+        axios.get(`http://5dd7af92505c590014d3b4ac.mockapi.io/pets/${id}` )
+        .then((res) => this.setState({pet: res.data}) )
         .catch(() => this.setState({error: true}) )
     }
 

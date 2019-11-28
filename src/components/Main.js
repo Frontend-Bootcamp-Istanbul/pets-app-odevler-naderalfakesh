@@ -8,9 +8,9 @@ function Main(props) {
             <Switch>
                 <Route exact path="/" component={HomePage}/>
                 <Route exact path="/favoriler" component={FavoritesPage}/>
-                <Route exact path="/detay" component={DetailsPage}/>
-                {/* just for fun url parameter added */}
                 <Route exact path="/detay/:id" component={DetailsPage}/>
+                {/* just for fun different approach */}
+                <Route exact path="/detay" component={DetailsPage}/>
             </Switch>
         </div>
     );
