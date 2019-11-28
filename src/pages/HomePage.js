@@ -39,7 +39,7 @@ class HomePage extends React.Component{
     render(){
         return (
             <div>
-                <div className="container">
+                <div className="container" >
                     <div className="row">
                         <div className="col-lg-3">
                             <Sidebar
@@ -53,6 +53,7 @@ class HomePage extends React.Component{
                                 activeFilter={this.state.activeFilter}
                                 searchValue={this.state.searchValue}
                                 petSelect={this.petSelect}
+                                
                             />
                         </div>
                     </div>

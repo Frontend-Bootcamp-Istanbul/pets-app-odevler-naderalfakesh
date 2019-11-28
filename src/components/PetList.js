@@ -11,7 +11,9 @@ class PetList extends React.Component{
         this.state = {
             _pets: [],
             pets: [],
-            yukleniyor: true
+            yukleniyor: true,
+            perScroll: 4,
+            page : 1  
         }
     }
 
@@ -19,8 +21,9 @@ class PetList extends React.Component{
         getPets().then((data) => {
             this.setState({
                 _pets: data,
-                pets: data,
+                pets: data.slice(0,this.state.perScroll),
                 yukleniyor: false
+                
             })
         })
     }
@@ -39,7 +42,7 @@ class PetList extends React.Component{
             this.setState({
                 pets: this.state._pets.filter((pet) => {
                     return stringContains(pet.name, this.props.searchValue)
-                })
+                }).slice(0,this.state.perScroll * this.state.page)
             })
         }else{
             this.setState({
@@ -47,12 +50,22 @@ class PetList extends React.Component{
                     return pet.breed === this.props.activeFilter;
                 }).filter((filteredPet) => {
                     return stringContains(filteredPet.name, this.props.searchValue)
-                })
+                }).slice(0,this.state.perScroll * this.state.page)
             })
         }
     }
 
-    
+    // infinit scroll function
+    infiniteScrol = window.onscroll = () => {
+        let d = document.documentElement;
+        let offset = d.scrollTop + window.innerHeight;
+        let height = d.offsetHeight;
+        
+        // when document is at the bottom add one page and call filter again
+        if (offset === height) {
+            this.setState({page: this.state.page + 1 },()=>this.filterPets())
+        }
+    };
 
     render(){
         const Yukleniyor = <div>Yukleniyor</div>;
